@@ -6,14 +6,14 @@ const computeRootMatch = (pathname) => {
     return { path: "/", url: "/", params: {}, isExact: pathname === "/" };
 }
 const Router = ({history, children}) => {
-    const [location, setlocation] = useState({})
+    const [location, setLocation] = useState({})
     useEffect(() => {
-        setlocation(history.location);
-        const unListhen = history.listhen(({location}) => {
-            setlocation(location);
+        setLocation(history.location);
+        const unListen = history.listen(({location}) => {
+            setLocation(location);
         });
         return () => {
-            unListhen && unListhen();
+            unListen && unListen();
         }
     }, [])
     return <RouterContext.Provider value={{

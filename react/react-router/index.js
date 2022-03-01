@@ -6,4 +6,4 @@ export {default as Switch} from './Switch';
 export {default as Redirect} from './Redirect';
 export {default as Route} from './Route';
 export {default as Link} from './Link';
-export { useHistory, useLocation, useParams, useRouteMatch } from "./hooks.js.js";
+export { useHistory, useLocation, useParams, useRouteMatch } from "./hooks.js.js.js";

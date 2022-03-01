@@ -8,6 +8,7 @@ const computeRootMatch = (pathname) => {
 const Router = ({history, children}) => {
     const [location, setLocation] = useState({})
     useEffect(() => {
+        // 当前页面跳转，调用了history.push replace 就会触发 history.listen的 回调函数，从而更新RouterContext
         setLocation(history.location);
         const unListen = history.listen(({location}) => {
             setLocation(location);

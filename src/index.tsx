@@ -4,7 +4,7 @@ import './index.css';
 // 这里修改page-xxx 来查看对应hooks使用方式
 // 这里修改page-xxx 来查看对应hooks使用方式
 // 这里修改page-xxx 来查看对应hooks使用方式
-import App from './page-redux';
+import App from './page-router';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

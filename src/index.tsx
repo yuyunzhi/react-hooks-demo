@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // 这里修改page-xxx 来查看对应hooks使用方式
+// 这里修改page-xxx 来查看对应hooks使用方式
+// 这里修改page-xxx 来查看对应hooks使用方式
 import App from './page-redux';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <App />,
   document.getElementById('root')
 );
 

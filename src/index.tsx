@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './page-forwardRef';
+// 这里修改page-xxx 来查看对应hooks使用方式
+import App from './page-redux';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

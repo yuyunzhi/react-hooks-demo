@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { HashRouter as Router, Switch, Route} from 'react-router-dom'
-
+import { BrowserRouter as Router, Switch, Route,useHistory} from 'react-router-dom'
+import Component1 from './component1'
+import Component2 from './component2'
 /**
  * 注意useRef 只有一个current，并且赋值后不会更新App
  * 所以<p>nRef.current</p>是不会变的，如果需要变化，制造一个update API
@@ -13,11 +14,11 @@ function App(props: any) {
   return (
     <Router>
       <Switch>
-        <Route path="/">
-          <div>页面1</div>
+        <Route exact path="/">
+          <Component1/>
         </Route>
-        <Route path="/page">
-          <div>页面2</div>
+        <Route exact path="/page">
+          <Component2></Component2>
         </Route>
       </Switch>
     </Router>

@@ -8,7 +8,7 @@ import React, {useEffect, useRef, useState} from 'react';
  *
  *  当页面有useState执行了，就会渲染更新useRef的值
  */
-function App(props) {
+function App(props:any) {
 
     const nRef = useRef(0)  // {current:0}
     const  [n,setN] = useState(0)
@@ -26,7 +26,6 @@ function App(props) {
     return ()=>{
       console.log('当页面离开的时候执行这段代码');
       clearInterval(timer)
-      timer = null
     }
   },[])
 

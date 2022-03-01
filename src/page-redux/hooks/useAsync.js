@@ -1,5 +1,5 @@
 import {useContext, useEffect} from "react";
-import ajax from "../../utils/ajax";
+import ajax from "./ajax";
 import {Context} from "../index";
 
 export default function useAsync(path, actionFn) {

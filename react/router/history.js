@@ -12,7 +12,7 @@ const createPath = ({
 }
 
 // 将 path 解析成 location 对象
-const parsePath = () => {
+const parsePath = (path) => {
     let partialPath = {};
     if (path) {
       let hashIndex = path.indexOf('#');
@@ -32,7 +32,7 @@ const parsePath = () => {
     return partialPath;
 }
 
-// 获取将要跳转的 loaction 对象
+// 获取将要跳转的 location 对象
 const getNextLocation = (to, state = null) =>{
     return {
       ...(typeof to === 'string' ? parsePath(to) : to),
@@ -205,7 +205,7 @@ export const createHashHistory = () => {
     }
     window.addEventListener(PopStateEventType, handlePop);
     window.addEventListener(HashChangeEventType, handlePop);
-
+    
     const listeners = createEvents();
 
     const push = (to, state) => {
@@ -217,7 +217,7 @@ export const createHashHistory = () => {
         }
         applyListen(ACTION.PUSH);
     }
-
+    
     const replace = (to, state) => {
         const [historyState, url] = getHistoryStateAndUrl(getNextLocation(to, state));
         globalHistory.replaceState(historyState, '', url);

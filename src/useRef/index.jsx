@@ -28,7 +28,7 @@ function App(props) {
       clearInterval(timer)
       timer = null
     }
-  },[nRef.current])
+  },[])
 
     return (
         <div className="App">

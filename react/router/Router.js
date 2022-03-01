@@ -26,3 +26,14 @@ const Router = ({history, children}) => {
 }
 
 export default Router;
+
+// RouterContext.Provider 
+
+// import { useLocation,useParams,useRouteMatch} from 'react-router-dom'
+
+// HistoryContext.Provider
+
+// import {useHistory} from 'react-router-dom'
+
+// Router 添加了 RouterContext.Provider 、HistoryContext.Provider 以及对 history.listen
+// 当history.listen 更新的时候，更新location

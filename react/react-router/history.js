@@ -134,7 +134,7 @@ export const createBrowserHistory = () => {
         }
         applyListen(ACTION.PUSH)
     }
-
+    
     const replace = (to, state) => {
         const [historyState, url] = getHistoryStateAndUrl(getNextLocation(to, state))
         globalHistory.replaceState(historyState, '', url)

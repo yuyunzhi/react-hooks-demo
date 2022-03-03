@@ -123,7 +123,10 @@ function render (elements, containerDom) {
     dom: containerDom,
     newProps: { children: elements },
   })
-  requestIdleCallback(performWork) // 浏览器每一帧渲染的空闲时间
+
+  // 在requestIdleCallback注册 performWork 任务。
+  // 表示浏览器每一帧渲染的空闲时间里去执行 performWork 任务
+  requestIdleCallback(performWork)
 }
 // 更新
 function scheduleUpdate (instance, partialState) {
@@ -136,24 +139,27 @@ function scheduleUpdate (instance, partialState) {
 }
 // 任务时间安排
 function performWork (deadline) {
-  workLoop(deadline) // 在当前帧空闲时间段执行任务，本次渲染帧执行时间结束后执行以下判断
+  // 在当前帧空闲时间段执行任务循环 workLoop
+  workLoop(deadline)
+  // 本次更新存在未执行完工作或者队列存在其他更新任务则加入下一次requestIdleCallback 任务里执行
   if (nextUnitOfWork || updateQueue.length > 0) {
-    // 本次更新存在未执行完工作或者队列存在其他更新任务
-    requestIdleCallback(performWork) // 任务放入下次空闲时间执行
+    requestIdleCallback(performWork)
   }
 }
 // 执行Xeact核心对比工作
 function workLoop (deadline) {
+  // 本次更新无任务执行，则取出更新队列中的任务
   if (!nextUnitOfWork) {
-    // 本次更新无任务执行，则取出更新队列中的任务
     resetNextUnitOfWork()
   }
+
+  // 存在未完成工作 且有任务则继续执行 任务
   while (nextUnitOfWork && deadline.timeRemaining() > ENOUGH_TIME) {
-    // 存在未完成工作和剩余时间
     nextUnitOfWork = performUnitOfWork(nextUnitOfWork) // 循环执行
   }
+
+  // 本次工作全部完成，提交全部dom变更
   if (pendingCommit) {
-    // 本次工作全部完成，提交全部dom变更
     commitAllWork(pendingCommit)
   }
 }
@@ -198,7 +204,7 @@ function performUnitOfWork (wipFiber) {
     return wipFiber.child
   }
 
-  // No child, we call completeWork until we find a sibling
+  // 如果没有child 就找兄弟元素
   let uow = wipFiber
   while (uow) {
     completeWork(uow) // 合并effects到父元素
